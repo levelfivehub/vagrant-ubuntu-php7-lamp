@@ -8,9 +8,15 @@ This repository is used to get a project setup with ZF2, all ready with the foll
 - Grunt
 - Bower
 
-The vagrant box configuration is stored in the infrastructure directory.  In this directory will be a file:
+Once downloading this repository, set up the configuration in:
 
-'configure.sh
+```
+infrastructure/init.cfg
+```
 
+Then run:
 
+```
+configure.sh
+```
 
