@@ -30,6 +30,8 @@ Resources: puphpet.com
 Things to do:
 
 1. Configure Doctrine to access local database automatically (no manual adjustments required)
-2. Set up grunt tasks ready to be used on a new environment.  Such as Apache restart etc...
+2. Complete work on ZF2 skeleton with Doctrine2/Node/Grunt/Bower to include into composer
+
+###Please note; application will not display until you configure module and public directory###
 
 Only currently supported on Linux/OS development environments.
