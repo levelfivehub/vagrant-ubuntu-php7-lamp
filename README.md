@@ -5,8 +5,8 @@
 This repository is used to get a project setup with ZF2, all ready with the following:
 
 - NodeJS
-- Grunt
-- Bower
+- Grunt (With some Doctrine commands pre-set)
+- Bower (Bootstrap)
 - Elastic Search
 - Git
 - xDebug

@@ -15,13 +15,11 @@ source init.cfg
 echo ">>> Setting up your box: ${virtual_box_name}\n\n"
 
 if [ ! -f /puphpet/config.yaml.bak ]; then
-    echo ">>> Configuring puppet...\n"
+    echo ">>> Configuring puppet... Old configuration file will be saved as puphpet/config.yaml.bk\n"
     sed -i.bak s/{VIRTUALBOX_NAME}/${virtual_box_name}/g puphpet/config.yaml
     sed -i.bak s/{VM_IP_ADDRESS}/${local_ip_address}/g puphpet/config.yaml
     sed -i.bak s/{LOCAL_HOSTNAME}/${local_hostname}/g puphpet/config.yaml
 fi
-
-echo ">>> Configuring hostname for apache\n"
 
 echo ">>> Time for the long hard part.... please be patient\n\n"
 
@@ -41,8 +39,18 @@ php -r "readfile('https://getcomposer.org/installer');" | php
 
 echo "\n"
 
-echo "Zend Framework 2 - Skeleton App setup"
+cp ../infrastructure/application-assets/composer.json .
 
-php composer.phar create-project --stability="dev" zendframework/skeleton-application ../app
+composer install
 
-echo "/etc/hosts >> ${local_ip_address} ${$virtual_box_name}"
+cp ../infrastructure/application-assets/package.json .
+
+npm install
+
+cp ../infrastructure/application-assets/bower.json .
+
+bower install
+
+cp -r ../infrastructure/application-assets/ .
+
+echo "/etc/hosts >> ${local_ip_address} ${virtual_box_name}"
