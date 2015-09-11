@@ -3,7 +3,7 @@ vagrantfile:
     vm:
         box: puphpet/centos65-x64
         box_url: puphpet/centos65-x64
-        hostname: my-app
+        hostname: {LOCAL_HOSTNAME}
         memory: '512'
         cpus: '1'
         chosen_provider: virtualbox
@@ -160,9 +160,9 @@ apache:
         - rewrite
     vhosts:
         av_awk9744logwq:
-            servername: my-app
+            servername: {LOCAL_HOSTNAME}
             serveraliases:
-                - www.my-app
+                - www.{LOCAL_HOSTNAME}
             docroot: /var/www/public
             port: '80'
             setenv:

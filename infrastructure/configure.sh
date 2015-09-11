@@ -33,32 +33,24 @@ echo ">>> Cleaning up"
 
 cd ../app && rm -rf *
 
+git clone git@github.com:gaurav-php/zend-framework-2-doctrine-2-skeleton.git .
+
 echo ">>> Let's get composer"
 
 php -r "readfile('https://getcomposer.org/installer');" | php
 
 echo "\n"
 
-cp ../infrastructure/application-assets/composer.json .
-
 echo ">>> Installing composer components that we need"
 
 composer install
 
-cp ../infrastructure/application-assets/package.json .
+echo ">>> Installing Node and components that we need\n"
 
 npm install
-
-echo ">>> Installing Node and components that we need"
-
-cp ../infrastructure/application-assets/bower.json .
 
 bower install
 
 npm install -g bower
 
-echo ">>> Installing Bower and components that we need"
-
-cp -r ../infrastructure/application-assets/ .
-
-echo "/etc/hosts >> ${local_ip_address} ${virtual_box_name}"
+echo "/etc/hosts >> ${local_ip_address} ${local_hostname}"
