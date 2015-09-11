@@ -41,15 +41,23 @@ echo "\n"
 
 cp ../infrastructure/application-assets/composer.json .
 
+echo ">>> Installing composer components that we need"
+
 composer install
 
 cp ../infrastructure/application-assets/package.json .
 
 npm install
 
+echo ">>> Installing Node and components that we need"
+
 cp ../infrastructure/application-assets/bower.json .
 
 bower install
+
+npm install -g bower
+
+echo ">>> Installing Bower and components that we need"
 
 cp -r ../infrastructure/application-assets/ .
 
