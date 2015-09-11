@@ -1,24 +1,19 @@
 # -*- mode: ruby -*-
-# vi: set ft=ruby :
 
-# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
-VAGRANTFILE_API_VERSION = "2"
+dir = File.dirname(File.expand_path(__FILE__))
 
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+require 'yaml'
+require "#{dir}/puphpet/ruby/deep_merge.rb"
 
-  # Set a unique name based on your project
-  config.vm.name = "{VIRTUALBOX_NAME}"
+configValues = YAML.load_file("#{dir}/puphpet/config.yaml")
 
-  # CentOS 6.5 x64 Box
-  config.vm.box = "puphpet/centos65-x64"
-
-  # IP Address to access via local machine
-  config.vm.network "private_network", ip: "{VM_IP_ADDRESS}"
-
-  # First parameter is local directory, second parameter is VM directory
-  config.vm.synced_folder "../app", "/var/www"
-
-  # Setup memory maximum limit of 1GB
-  config.vm.memory 1024
-
+if File.file?("#{dir}/puphpet/config-custom.yaml")
+  custom = YAML.load_file("#{dir}/puphpet/config-custom.yaml")
+  configValues.deep_merge!(custom)
 end
+
+data = configValues['vagrantfile']
+
+Vagrant.require_version '>= 1.6.0'
+
+eval File.read("#{dir}/puphpet/vagrant/Vagrantfile-#{data['target']}")
