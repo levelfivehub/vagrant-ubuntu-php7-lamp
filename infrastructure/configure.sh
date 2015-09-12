@@ -6,7 +6,14 @@ echo '>>> Hello Master! I am setting you up now\n'
 
 echo '>>> Resetting Vagrant\n'
 
-vagrant destroy
+vagrant destroy -f
+
+echo '>>> Get the APP files\n'
+
+cd ../
+git clone git@github.com:gaurav-php/zend-framework-2-doctrine-2-skeleton.git app
+
+cd infrastructure
 
 echo '>>> Grabbing your configuration file\n\n'
 
@@ -25,32 +32,14 @@ echo ">>> Time for the long hard part.... please be patient\n\n"
 
 vagrant up
 
+cd ../app
+
+sh installation.sh
+
 echo ">>> Master... we are now ready.  Update your machines hosts file"
 
 echo "\n"
 
 echo ">>> Cleaning up"
-
-cd ../app && rm -rf *
-
-git clone git@github.com:gaurav-php/zend-framework-2-doctrine-2-skeleton.git .
-
-echo ">>> Let's get composer"
-
-php -r "readfile('https://getcomposer.org/installer');" | php
-
-echo "\n"
-
-echo ">>> Installing composer components that we need"
-
-composer install
-
-echo ">>> Installing Node and components that we need\n"
-
-npm install
-
-bower install
-
-npm install -g bower
 
 echo "/etc/hosts >> ${local_ip_address} ${local_hostname}"
