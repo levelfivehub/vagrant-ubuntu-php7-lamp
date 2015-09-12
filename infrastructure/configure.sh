@@ -21,6 +21,9 @@ source init.cfg
 
 echo ">>> Setting up your box: ${virtual_box_name}\n\n"
 
+rm puphpet/config.yaml.bk
+git checkout -- puphpet/config.yaml
+
 if [ ! -f /puphpet/config.yaml.bak ]; then
     echo ">>> Configuring puppet... Old configuration file will be saved as puphpet/config.yaml.bk\n"
     sed -i.bak s/{VIRTUALBOX_NAME}/${virtual_box_name}/g puphpet/config.yaml
