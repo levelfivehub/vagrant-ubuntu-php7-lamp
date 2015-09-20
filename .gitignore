@@ -2,3 +2,5 @@
 .vagrant
 *.bak
 app/
+config.yaml
+init.cfg
