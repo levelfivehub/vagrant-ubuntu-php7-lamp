@@ -1,29 +1,31 @@
 #!/bin/bash
 
-cat welcome-text.txt
-
 echo '>>> Hello Master! I am setting you up now\n'
+
+cat assets/welcome-text.txt
+
+echo '>>> Grabbing your configuration file\n\n'
+
+CURRENT=`pwd`
+source init.cfg
 
 echo '>>> Resetting Vagrant\n'
 
 vagrant destroy -f
 
-echo '>>> Get the APP files\n'
+echo '>>> Making the APP Directory\n'
 
 cd ../
 mkdir app
-cd infrastructure
-
-echo '>>> Grabbing your configuration file\n\n'
-
-source init.cfg
+cd $CURRENT
 
 echo ">>> Setting up your box: ${virtual_box_name}\n\n"
 
-rm puphpet/config.yaml.bk
-git checkout -- puphpet/config.yaml
+rm puphpet/config.yaml.bak
+rm puphpet/config.yaml
+cp puphpet/original-config.yaml puphpet/config.yaml
 
-if [ ! -f /puphpet/config.yaml.bak ]; then
+if [ ! -f puphpet/config.yaml.bak ]; then
     echo ">>> Configuring puppet... Old configuration file will be saved as puphpet/config.yaml.bk\n"
     sed -i.bak s/{VIRTUALBOX_NAME}/${virtual_box_name}/g puphpet/config.yaml
     sed -i.bak s/{VM_IP_ADDRESS}/${local_ip_address}/g puphpet/config.yaml
@@ -40,6 +42,18 @@ echo "\n"
 
 echo ">>> Cleaning up"
 
-rm -rf .git
+cd ../app
+rm -rf *
+cd $CURRENT
+
+if [ -z "${repository}" ]
+then
+    echo ">>> No repository to get"
+    cp assets/index.html ../app/
+else
+    echo ">>> Cloning Repository"
+    cd ../app
+    git clone ${repository} .
+fi
 
 echo "/etc/hosts >> ${local_ip_address} ${local_hostname}"

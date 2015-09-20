@@ -163,7 +163,7 @@ apache:
             servername: {LOCAL_HOSTNAME}
             serveraliases:
                 - www.{LOCAL_HOSTNAME}
-            docroot: /var/www/public
+            docroot: /var/www/
             port: '80'
             setenv:
                 - 'APP_ENV dev'
@@ -177,7 +177,7 @@ apache:
             ssl_cipher: ''
             directories:
                 avd_2ljgpb9qxzuw:
-                    path: /var/www/public
+                    path: /var/www/
                     options:
                         - Indexes
                         - FollowSymlinks
