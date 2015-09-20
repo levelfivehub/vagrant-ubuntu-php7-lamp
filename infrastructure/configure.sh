@@ -11,8 +11,7 @@ vagrant destroy -f
 echo '>>> Get the APP files\n'
 
 cd ../
-git clone git@github.com:gaurav-php/zend-framework-2-doctrine-2-skeleton.git app
-
+mkdir app
 cd infrastructure
 
 echo '>>> Grabbing your configuration file\n\n'

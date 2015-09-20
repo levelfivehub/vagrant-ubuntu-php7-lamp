@@ -70,7 +70,7 @@
                 | )   ( || )   ( |/\____) |   | |   | (____/\| ) \ \__ _
                 |/     \||/     \|\_______)   )_(   (_______/|/   \__/(_)
 
-                          Vagrant - CentOS - Zend Framework 2
+                         Vagrant - CentOS - Apache2 - PHP - MySQL
                               Provided by: Gaurav Malhotra
                                gaurav@level5websites.com
 
