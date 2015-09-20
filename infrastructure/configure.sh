@@ -34,14 +34,12 @@ echo ">>> Time for the long hard part.... please be patient\n\n"
 
 vagrant up
 
-cd ../app
-
-sh installation.sh
-
 echo ">>> Master... we are now ready.  Update your machines hosts file"
 
 echo "\n"
 
 echo ">>> Cleaning up"
+
+rm -rf .git
 
 echo "/etc/hosts >> ${local_ip_address} ${local_hostname}"

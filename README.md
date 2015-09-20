@@ -24,12 +24,11 @@ Then run:
 configure.sh
 ```
 
-After configure your git:
+This installation will also remove the .git directory afterwards.  You will then need to set the git remote url in the 'app' folder.
 
 ```
-git remote remote origin
+cd app
 git remote add origin {url}
-git branch --set-upstream-to=origin/master master
 ```
 
 You may need to make adjustments to the command above to cater for your own requirements.
