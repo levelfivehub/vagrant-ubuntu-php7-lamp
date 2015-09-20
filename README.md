@@ -24,6 +24,16 @@ Then run:
 configure.sh
 ```
 
+After configure your git:
+
+```
+git remote remote origin
+git remote add origin {url}
+git branch --set-upstream-to=origin/master master
+```
+
+You may need to make adjustments to the command above to cater for your own requirements.
+
 ####All your project files should live in the 'app' directory.  This will be generated after the installation process.
 
 Resources: puphpet.com
