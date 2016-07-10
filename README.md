@@ -1,4 +1,4 @@
-#Quick vagrant installation of Cent OS
+#Quick vagrant installation
 
 This repository is used to get a new project setup, all ready with the following:
 
