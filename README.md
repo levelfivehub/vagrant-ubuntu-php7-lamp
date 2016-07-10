@@ -2,20 +2,16 @@
 
 This repository is used to get a new project setup, all ready with the following:
 
-- CentOS
+- Ubuntu
 - Apache2
-- PHP
-- MySQL
+- PHP 7
+- MySQL 5.6
 - NodeJS
-- Elastic Search
-- Git
-- xDebug
-- MongoDB
 
 Checkout this repository within the project folder where you intend to develop.
 
 ```
-git clone git@github.com:gaurav-php/vagrant-centos-php5-apache2-mysql-quickstart.git infrastructure
+git clone git@github.com:levelfivehub/vagrant-ubuntu-php7-lamp.git infrastructure
 ```
 
 This will then create an infrastructure folder for your Vagrant/infrastructure.
@@ -49,6 +45,12 @@ Within the app directory add your git repository.
 ```
 git remote add origin {url-to-git}
 git branch --set-upstream-to=origin/master  master
+```
+
+Database credentials:
+```
+Username: dbuser
+Password: password
 ```
 
 Resources: puphpet.com
